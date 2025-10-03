@@ -5,16 +5,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* Your custom styles can go here */
 
+/* Global reset / layout */
 html, body, #root {
   height: 100%;
   margin: 0;
 }
+
 html {
   scroll-behavior: smooth;
 }
 
+/* Navbar height var used for top padding + anchor offset */
+:root { --nav-h: 3px; }
+
+/* Optional: active nav link (kept from before) */
+.nav-item.active {
+  background-color: rgba(255,255,255,0.15);
+  border-radius: 0.5rem;
+  transition: background-color .2s ease;
+}
+.nav-item:hover { background-color: rgba(255,255,255,0.1); }
+
+/* ---- your existing theme tokens below unchanged ---- */
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -123,10 +136,6 @@ html {
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+  * { @apply border-border outline-ring/50; }
+  body { @apply bg-background text-foreground; }
 }

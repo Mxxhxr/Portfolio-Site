@@ -1,55 +1,75 @@
 import "./index.css";
 import GlassNav from "@/components/GlassNav";
 import ASCIIText from "./components/ASCIIText";
-// import DecryptedText from "./components/DecryptedText";
+import About from "@/sections/About";
 
 export default function App() {
   return (
-    <div className="min-h-[200vh] bg-black text-white">
-      {/* fixed bar sits on top */}
+    <div className="bg-black text-white">
+      {/* Fixed navbar */}
       <GlassNav className="mt-2" />
-      {/* the sections */}
+
+      {/* Spacer equal to nav height so first section starts below the bar */}
+      <div style={{ height: "var(--nav-h)" }} />
+
       <main className="mx-auto px-6">
         <section
-            id="home"
-            className="relative min-h-screen flex items-center justify-center"
-          >
-            <ASCIIText
-              text="Hey!"
-              enableWaves={true}
-              asciiFontSize={9}
-              textFontSize={55}
-            />
-          </section>
+          id="home"
+          className="h-[calc(100vh-var(--nav-h))] scroll-mt-[var(--nav-h)] flex items-center justify-center"
+        >
+          <ASCIIText
+            text="Hey!"
+            enableWaves={true}
+            asciiFontSize={11}
+            textFontSize={65}
+          />
+        </section>
 
-        <section id="about" className="min-h-screen scroll-mt-28 py-24">
-          <div style={{ marginTop: '4rem' }}>
-          {/* <DecryptedText
-            text="This text animates when in view"
-            animateOn="view"
-            revealDirection="center"
-          /> */}
+        <section
+          id="about"
+          className="h-[calc(100vh-var(--nav-h))] scroll-mt-[var(--nav-h)] flex items-center justify-center"
+        >
+          <About />
+        </section>
+
+        <section
+          id="experience"
+          className="h-[calc(100vh-var(--nav-h))] scroll-mt-[var(--nav-h)] flex items-center justify-center"
+        >
+          <div>
+            <h2 className="text-4xl font-bold mb-6">Experience</h2>
+            <p>Experience content…</p>
           </div>
         </section>
 
-        <section id="experience" className="min-h-screen scroll-mt-28 py-24">
-          <h2 className="text-4xl font-bold mb-6">Experience</h2>
-          <p>Experience content…</p>
+        <section
+          id="projects"
+          className="h-[calc(100vh-var(--nav-h))] scroll-mt-[var(--nav-h)] flex items-center justify-center"
+        >
+          <div>
+            <h2 className="text-4xl font-bold mb-6">Projects</h2>
+            <p>Projects content…</p>
+          </div>
         </section>
 
-        <section id="projects" className="min-h-screen scroll-mt-28 py-24">
-          <h2 className="text-4xl font-bold mb-6">Projects</h2>
-          <p>Projects content…</p>
+        <section
+          id="resume"
+          className="h-[calc(100vh-var(--nav-h))] scroll-mt-[var(--nav-h)] flex items-center justify-center"
+        >
+          <div>
+            <h2 className="text-4xl font-bold mb-6">Resume</h2>
+            <p>Resume content…</p>
+          </div>
         </section>
 
-        <section id="resume" className="min-h-screen scroll-mt-28 py-24">
-          <h2 className="text-4xl font-bold mb-6">Resume</h2>
-          <p>Resume content…</p>
-        </section>
-
-        <section id="contact" className="min-h-screen scroll-mt-28 py-24">
-          <h2 className="text-4xl font-bold mb-6">Contact</h2>
-          <p>Contact content…</p>
+        <section
+          id="contact"
+          className="h-[calc(100vh-var(--nav-h))] scroll-mt-[var(--nav-h)] flex items-center justify-center"
+        >
+          <div>
+            <h2 className="text-4xl font-bold mb-6">Contact</h2>
+            <p>Contact content…</p>
+          </div>
         </section>
       </main>
     </div>
