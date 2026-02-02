@@ -1,7 +1,6 @@
 // src/sections/About.tsx
 import GlassPanel from "../components/GlassPanel";
 import LogoLoop from "../components/LogoLoop";
-import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from "react-icons/si";
 
 const techLogos = [
   {
@@ -130,7 +129,7 @@ const techLogos = [
       </div>
     ),
     title: "Python",
-    href: "https://www.python.com",
+    href: "https://www.python.org",
     },
     {
     node: (
@@ -367,7 +366,7 @@ export default function AboutSection() {
           <h2 className="text-3xl font-bold mb-4">Hi there 👋</h2>
 
           <p className="text-white/80 leading-relaxed text-lg mb-8">
-            I’m Maahir, a senior CS student at NJIT with 10 months of industry experience at Medtronic and
+            I'm Maahir, a recent CS graduate from NJIT (Dec 2025) with 10 months of industry experience at Medtronic and
             Cambridge Associates. I build scalable software from backend automation pipelines to full-stack web
             apps, turning complex problems into reliable solutions. I focus on clean design, performance, and
             delivering results that make an impact.

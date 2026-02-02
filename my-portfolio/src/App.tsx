@@ -2,6 +2,7 @@ import "./index.css";
 import GlassNav from "@/components/GlassNav";
 import ASCIIText from "./components/ASCIIText";
 import About from "@/sections/About";
+import Exeperience from "@/sections/Experience";
 
 export default function App() {
   return (
@@ -25,21 +26,12 @@ export default function App() {
           />
         </section>
 
-        <section
-          id="about"
-          className="h-[calc(100vh-var(--nav-h))] scroll-mt-[var(--nav-h)] flex items-center justify-center"
-        >
+        <section id="about" className="h-[calc(100vh-var(--nav-h))] scroll-mt-[var(--nav-h)] flex items-center justify-center">
           <About />
         </section>
 
-        <section
-          id="experience"
-          className="h-[calc(100vh-var(--nav-h))] scroll-mt-[var(--nav-h)] flex items-center justify-center"
-        >
-          <div>
-            <h2 className="text-4xl font-bold mb-6">Experience</h2>
-            <p>Experience content…</p>
-          </div>
+        <section id="experience" className="h-[calc(100vh-var(--nav-h))] scroll-mt-[var(--nav-h)] flex items-center justify-center">
+          <Exeperience />
         </section>
 
         <section
@@ -75,3 +67,5 @@ export default function App() {
     </div>
   );
 }
+
+
