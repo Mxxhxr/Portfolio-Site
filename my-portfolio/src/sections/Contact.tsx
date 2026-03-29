@@ -24,7 +24,7 @@ const Contact: React.FC = () => {
     emailjs
       .send(
         "service_n45ri8e", // Service ID
-        "template_j3jv3cg", // Template ID
+        "template_m1c7aj1", // Template ID
         templateParams,
         "70rVQ9E1jewZ1-zZf" // EmailJS public key
       )

@@ -33,7 +33,7 @@ export default function App() {
         </section>
 
         <section id="experience" className="h-[calc(100vh-var(--nav-h))] scroll-mt-[var(--nav-h)] flex items-center justify-center">
-          <Exeperience/>
+          <Exeperience />
         </section>
 
         <section
