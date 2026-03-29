@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { Briefcase } from "lucide-react";
 
 type ExperienceItem = {
-  company: string;
+  company: React.ReactNode;
   role: string;
   location?: string;
   period: string;
@@ -24,7 +24,8 @@ const experiences: ExperienceItem[] = [
       "Built Spring Boot APIs and React features for a production portal serving 1,300+ global clients.",
       "Shipped 10 production features and resolved 25+ issues using log analysis and root-cause debugging.",
       "Improved frontend data flow and reliability, increasing engagement by ~20% across key workflows.",
-      "Supported AWS EC2/S3 migration efforts with focus on stability and release readiness."
+      "Supported AWS EC2/S3 migration efforts with focus on stability and release readiness.",
+      "Internship extended into a remote co-op role due to high-impact contributions and strong problem-solving skills."
     ]
   },
   {

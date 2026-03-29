@@ -1,4 +1,3 @@
-// src/sections/About.tsx
 import GlassPanel from "../components/GlassPanel";
 import LogoLoop from "../components/LogoLoop";
 
