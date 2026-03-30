@@ -1,8 +1,8 @@
-import React from "react";
+import React, { ElementType } from "react";
 import clsx from "clsx";
 
 type GlassPanelProps = {
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof JSX.IntrinsicElements | ElementType;
   tone?: "dark" | "light";
   className?: string;
   children: React.ReactNode;
