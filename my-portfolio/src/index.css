@@ -6,10 +6,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global reset / layout */
 html, body, #root {
   height: 100%;
   margin: 0;
+  margin-top: -10px;
 }
 
 html {
@@ -139,3 +139,4 @@ html {
   * { @apply border-border outline-ring/50; }
   body { @apply bg-background text-foreground; }
 }
+
