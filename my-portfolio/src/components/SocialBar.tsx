@@ -27,7 +27,8 @@ const SocialBar: React.FC = () => {
 
       {/* Resume */}
       <a
-        href="/Maahir_Vohra_Resume.pdf"
+        // href="/Maahir_Vohra_Resume.pdf"
+        href={`${import.meta.env.BASE_URL}Maahir_Vohra_Resume.pdf`}
         target="_blank"
         rel="noopener noreferrer"
         className="text-neutral-400 hover:text-white transition"

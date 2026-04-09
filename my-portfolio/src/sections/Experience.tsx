@@ -72,7 +72,7 @@ const Experience: React.FC = () => {
           {/* Timeline */}
           <div className="mt-10 relative">
             {/* vertical line */}
-            <div className="absolute left-3 top-0 bottom-0 w-px bg-neutral-800/80" />
+            <div className="absolute left-3.5 top-1 bottom-0 w-px bg-neutral-800/80" />
 
             <div className="space-y-10">
               {experiences.map((exp, idx) => (
