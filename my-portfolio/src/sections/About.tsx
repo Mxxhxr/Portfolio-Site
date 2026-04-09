@@ -6,7 +6,7 @@ const techLogos = [
     node: (
       <div className="flex items-center gap-3 h-[30px]">
         <img
-          src="/resources/powerbi-logo.png"
+          src="resources/powerbi-logo.png"
           alt="Power BI"
           className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
           loading="lazy"
@@ -22,7 +22,7 @@ const techLogos = [
     node: (
       <div className="flex items-center gap-3 h-[30px]">
         <img
-          src="/resources/figma-logo.svg"
+          src="resources/figma-logo.svg"
           alt="Figma"
           className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
           loading="lazy"
@@ -38,7 +38,7 @@ const techLogos = [
     node: (
       <div className="flex items-center gap-3 h-[30px]">
         <img
-          src="/resources/firebase-logo.png"
+          src="resources/firebase-logo.png"
           alt="Firebase"
           className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
           loading="lazy"
@@ -54,7 +54,7 @@ const techLogos = [
     node: (
       <div className="flex items-center gap-3 h-[30px]">
         <img
-          src="/resources/jira-logo.svg"
+          src="resources/jira-logo.svg"
           alt="Jira"
           className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
           loading="lazy"
@@ -70,7 +70,7 @@ const techLogos = [
     node: (
       <div className="flex items-center gap-3 h-[30px]">
         <img
-          src="/resources/git-logo.png"
+          src="resources/git-logo.png"
           alt="Git"
           className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
           loading="lazy"
@@ -86,9 +86,9 @@ const techLogos = [
     node: (
       <div className="flex items-center gap-3 h-[30px]">
         <img
-          src="/resources/aws-logo.png"
+          src="resources/aws-logo.png"
           alt="AWS"
-          className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
+          className="h-[25px] w-auto select-none [-webkit-user-drag:none]"
           loading="lazy"
           decoding="async"
         />
@@ -102,7 +102,7 @@ const techLogos = [
     node: (
       <div className="flex items-center gap-3 h-[30px]">
         <img
-          src="/resources/java-logo.png"
+          src="resources/java-logo.png"
           alt="Java"
           className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
           loading="lazy"
@@ -118,7 +118,7 @@ const techLogos = [
     node: (
       <div className="flex items-center gap-3 h-[30px]">
         <img
-          src="/resources/python-logo.png"
+          src="resources/python-logo.png"
           alt="Python"
           className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
           loading="lazy"
@@ -129,44 +129,44 @@ const techLogos = [
     ),
     title: "Python",
     href: "https://www.python.org",
-    },
-    {
+  },
+  {
     node: (
       <div className="flex items-center gap-3 h-[30px]">
-      <img
-        src="/resources/c-logo.svg"
-        alt="C"
-        className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
-        loading="lazy"
-        decoding="async"
-      />
-      <span className="text-white/90 text-xl font-medium">C</span>
+        <img
+          src="resources/c-logo.svg"
+          alt="C"
+          className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
+          loading="lazy"
+          decoding="async"
+        />
+        <span className="text-white/90 text-xl font-medium">C</span>
       </div>
     ),
     title: "C",
     href: "https://www.c.com",
-    },
-    {
+  },
+  {
     node: (
       <div className="flex items-center gap-3 h-[30px]">
-      <img
-        src="/resources/cpp-logo.png"
-        alt="C++"
-        className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
-        loading="lazy"
-        decoding="async"
-      />
-      <span className="text-white/90 text-xl font-medium">C++</span>
+        <img
+          src="resources/cpp-logo.png"
+          alt="C++"
+          className="h-[33px] w-auto select-none [-webkit-user-drag:none]"
+          loading="lazy"
+          decoding="async"
+        />
+        <span className="text-white/90 text-xl font-medium">C++</span>
       </div>
     ),
     title: "C++",
     href: "https://www.cplusplus.com",
-    },
-    {
-      node: (
+  },
+  {
+    node: (
       <div className="flex items-center gap-3 h-[30px]">
         <img
-          src="/resources/javascript-logo.png"
+          src="resources/javascript-logo.png"
           alt="JavaScript"
           className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
           loading="lazy"
@@ -182,7 +182,7 @@ const techLogos = [
     node: (
       <div className="flex items-center gap-3 h-[30px]">
         <img
-          src="/resources/typescript-logo.png"
+          src="resources/typescript-logo.png"
           alt="TypeScript"
           className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
           loading="lazy"
@@ -194,12 +194,11 @@ const techLogos = [
     title: "TypeScript",
     href: "https://www.typescriptlang.org",
   },
-
   {
     node: (
       <div className="flex items-center gap-3 h-[30px]">
         <img
-          src="/resources/bash-logo.png"
+          src="resources/bash-logo.png"
           alt="Bash"
           className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
           loading="lazy"
@@ -215,7 +214,7 @@ const techLogos = [
     node: (
       <div className="flex items-center gap-3 h-[30px]">
         <img
-          src="/resources/mysql-logo.webp"
+          src="resources/mysql-logo.webp"
           alt="MySQL"
           className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
           loading="lazy"
@@ -231,7 +230,7 @@ const techLogos = [
     node: (
       <div className="flex items-center gap-3 h-[30px]">
         <img
-          src="/resources/oraclesql-logog.svg"
+          src="resources/oraclesql-logo.svg"
           alt="Oracle SQL"
           className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
           loading="lazy"
@@ -247,7 +246,7 @@ const techLogos = [
     node: (
       <div className="flex items-center gap-3 h-[30px]">
         <img
-          src="/resources/postgresql-logo.png"
+          src="resources/postgresql-logo.png"
           alt="PostgreSQL"
           className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
           loading="lazy"
@@ -263,7 +262,7 @@ const techLogos = [
     node: (
       <div className="flex items-center gap-3 h-[30px]">
         <img
-          src="/resources/mongodb-logo.png"
+          src="resources/mongodb-logo.png"
           alt="MongoDB"
           className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
           loading="lazy"
@@ -279,7 +278,7 @@ const techLogos = [
     node: (
       <div className="flex items-center gap-3 h-[30px]">
         <img
-          src="/resources/react-logo.png"
+          src="resources/react-logo.png"
           alt="React"
           className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
           loading="lazy"
@@ -295,9 +294,9 @@ const techLogos = [
     node: (
       <div className="flex items-center gap-3 h-[30px]">
         <img
-          src="/resources/tailwind-logo.png"
+          src="resources/tailwind-logo.png"
           alt="Tailwind CSS"
-          className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
+          className="h-[25px] w-auto select-none [-webkit-user-drag:none]"
           loading="lazy"
           decoding="async"
         />
@@ -311,7 +310,7 @@ const techLogos = [
     node: (
       <div className="flex items-center gap-3 h-[30px]">
         <img
-          src="/resources/springboot-logo.png"
+          src="resources/springboot-logo.png"
           alt="Spring Boot"
           className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
           loading="lazy"
@@ -327,7 +326,7 @@ const techLogos = [
     node: (
       <div className="flex items-center gap-3 h-[30px]">
         <img
-          src="/resources/flask-logo.png"
+          src="resources/flask-logo.png"
           alt="Flask"
           className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
           loading="lazy"
@@ -343,7 +342,7 @@ const techLogos = [
     node: (
       <div className="flex items-center gap-3 h-[30px]">
         <img
-          src="/resources/docker-logo.png"
+          src="resources/docker-logo.png"
           alt="Docker"
           className="h-[30px] w-auto select-none [-webkit-user-drag:none]"
           loading="lazy"
@@ -375,7 +374,7 @@ export default function AboutSection() {
           <div className="relative h-[90px] overflow-hidden">
             <LogoLoop
               logos={techLogos}
-              speed={70}
+              speed={170}
               direction="left"
               logoHeight={48}     // overall row size target
               gap={40}

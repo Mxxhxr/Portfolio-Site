@@ -41,7 +41,7 @@ const ANIMATION_CONFIG = {
 } as const;
 
 const toCssLength = (value?: number | string): string | undefined =>
-  typeof value === 'number' ? `${value}px` : (value ?? undefined);
+  typeof value === 'number' ? `${value}px` : value ?? undefined;
 
 const cx = (...parts: Array<string | false | null | undefined>) => parts.filter(Boolean).join(' ');
 
@@ -226,9 +226,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
     }, []);
 
     useResizeObserver(updateDimensions, [containerRef, seqRef], [logos, gap, logoHeight]);
-
     useImageLoader(seqRef, updateDimensions, [logos, gap, logoHeight]);
-
     useAnimationLoop(trackRef, targetVelocity, seqWidth, isHovered, pauseOnHover);
 
     const cssVariables = useMemo(
@@ -245,10 +243,6 @@ export const LogoLoop = React.memo<LogoLoopProps>(
       () =>
         cx(
           'relative overflow-x-hidden group',
-          '[--logoloop-gap:32px]',
-          '[--logoloop-logoHeight:28px]',
-          '[--logoloop-fadeColorAuto:#ffffff]',
-          'dark:[--logoloop-fadeColorAuto:#0b0b0b]',
           scaleOnHover && 'py-[calc(var(--logoloop-logoHeight)*0.1)]',
           className
         ),
@@ -263,50 +257,57 @@ export const LogoLoop = React.memo<LogoLoopProps>(
       if (pauseOnHover) setIsHovered(false);
     }, [pauseOnHover]);
 
+    // Fixed type narrowing here
     const renderLogoItem = useCallback(
       (item: LogoItem, key: React.Key) => {
-        const isNodeItem = 'node' in item;
+        let content: React.ReactNode;
+        let itemAriaLabel: string | undefined;
+        let href: string | undefined;
 
-        const content = isNodeItem ? (
-          <span
-            className={cx(
-              'inline-flex items-center',
-              'motion-reduce:transition-none',
-              scaleOnHover &&
-                'transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120'
-            )}
-            aria-hidden={!!(item as any).href && !(item as any).ariaLabel}
-          >
-            {(item as any).node}
-          </span>
-        ) : (
-          <img
-            className={cx(
-              'h-[var(--logoloop-logoHeight)] w-auto block object-contain',
-              '[-webkit-user-drag:none] pointer-events-none',
-              '[image-rendering:-webkit-optimize-contrast]',
-              'motion-reduce:transition-none',
-              scaleOnHover &&
-                'transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120'
-            )}
-            src={(item as any).src}
-            srcSet={(item as any).srcSet}
-            sizes={(item as any).sizes}
-            width={(item as any).width}
-            height={(item as any).height}
-            alt={(item as any).alt ?? ''}
-            title={(item as any).title}
-            loading="lazy"
-            decoding="async"
-            draggable={false}
-          />
-        );
+        if ('node' in item) {
+          content = (
+            <span
+              className={cx(
+                'inline-flex items-center',
+                'motion-reduce:transition-none',
+                scaleOnHover &&
+                  'transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120'
+              )}
+              aria-hidden={!!item.href && !item.ariaLabel}
+            >
+              {item.node}
+            </span>
+          );
+          itemAriaLabel = item.ariaLabel ?? item.title;
+          href = item.href;
+        } else {
+          content = (
+            <img
+              className={cx(
+                'h-[var(--logoloop-logoHeight)] w-auto block object-contain',
+                '[-webkit-user-drag:none] pointer-events-none',
+                '[image-rendering:-webkit-optimize-contrast]',
+                'motion-reduce:transition-none',
+                scaleOnHover &&
+                  'transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120'
+              )}
+              src={item.src}
+              srcSet={item.srcSet}
+              sizes={item.sizes}
+              width={item.width}
+              height={item.height}
+              alt={item.alt ?? ''}
+              title={item.title}
+              loading="lazy"
+              decoding="async"
+              draggable={false}
+            />
+          );
+          itemAriaLabel = item.alt ?? item.title;
+          href = item.href;
+        }
 
-        const itemAriaLabel = isNodeItem
-          ? ((item as any).ariaLabel ?? (item as any).title)
-          : ((item as any).alt ?? (item as any).title);
-
-        const inner = (item as any).href ? (
+        const inner = href ? (
           <a
             className={cx(
               'inline-flex items-center no-underline rounded',
@@ -314,8 +315,8 @@ export const LogoLoop = React.memo<LogoLoopProps>(
               'hover:opacity-80',
               'focus-visible:outline focus-visible:outline-current focus-visible:outline-offset-2'
             )}
-            href={(item as any).href}
-            aria-label={itemAriaLabel || 'logo link'}
+            href={href}
+            aria-label={itemAriaLabel ?? 'logo link'}
             target="_blank"
             rel="noreferrer noopener"
           >
