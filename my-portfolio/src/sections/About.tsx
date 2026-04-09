@@ -374,7 +374,7 @@ export default function AboutSection() {
           <div className="relative h-[90px] overflow-hidden">
             <LogoLoop
               logos={techLogos}
-              speed={170}
+              speed={85}
               direction="left"
               logoHeight={48}     // overall row size target
               gap={40}
