@@ -46,22 +46,19 @@ const experiences: ExperienceItem[] = [
   }
 ];
 
-
 const cardBase =
   "rounded-2xl border border-neutral-700/70 bg-neutral-950/40 " +
   "shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_20px_60px_rgba(0,0,0,0.6)]";
 
 const Experience: React.FC = () => {
   return (
-    <section className="w-full bg-black text-neutral-100 px-4 py-24">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className={`${cardBase} p-8 md:p-10`}>
+    <section className="w-full bg-black text-neutral-100 px-4 py-16 md:py-24">
+      <div className="max-w-6xl mx-auto">
+        <div className={`${cardBase} p-6 md:p-10`}>
           <div className="flex items-start justify-between gap-6">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
-                My Experience
-              </h2>
-            </div>
+            <h2 className="text-2xl md:text-4xl font-semibold tracking-tight">
+              My Experience
+            </h2>
 
             <div className="hidden md:flex items-center gap-2 text-neutral-300">
               <Briefcase className="h-5 w-5" />
@@ -70,7 +67,7 @@ const Experience: React.FC = () => {
           </div>
 
           {/* Timeline */}
-          <div className="mt-10 relative">
+          <div className="mt-8 md:mt-10 relative">
             {/* vertical line */}
             <div className="absolute left-3.5 top-1 bottom-0 w-px bg-neutral-800/80" />
 
@@ -87,9 +84,9 @@ const Experience: React.FC = () => {
                   {/* dot */}
                   <div className="absolute left-[9px] top-2 h-3 w-3 rounded-full bg-neutral-300 shadow-[0_0_0_4px_rgba(24,24,27,1)]" />
 
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2">
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 md:gap-2">
                     <div>
-                      <h3 className="text-xl md:text-2xl font-semibold leading-tight">
+                      <h3 className="text-lg md:text-2xl font-semibold leading-tight">
                         {exp.company}
                       </h3>
                       <p className="mt-1 text-sm md:text-base text-neutral-300">
@@ -100,12 +97,12 @@ const Experience: React.FC = () => {
                       </p>
                     </div>
 
-                    <div className="text-sm text-neutral-400 md:text-right">
+                    <div className="text-xs md:text-sm text-neutral-400 md:text-right shrink-0">
                       {exp.period}
                     </div>
                   </div>
 
-                  <ul className="mt-5 space-y-2 text-sm md:text-base text-neutral-300 leading-relaxed">
+                  <ul className="mt-4 space-y-2 text-sm md:text-base text-neutral-300 leading-relaxed">
                     {exp.highlights.map((h, i) => (
                       <li key={i} className="ml-4 list-disc marker:text-neutral-500">
                         {h}

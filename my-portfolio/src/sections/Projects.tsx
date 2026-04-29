@@ -32,15 +32,13 @@ const cardBase =
 
 const Projects: React.FC = () => {
   return (
-    <section className="w-full bg-black text-neutral-100 px-4 py-24">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className={`${cardBase} p-8 md:p-10`}>
+    <section className="w-full bg-black text-neutral-100 px-4 py-16 md:py-24">
+      <div className="max-w-6xl mx-auto">
+        <div className={`${cardBase} p-6 md:p-10`}>
           <div className="flex items-start justify-between gap-6">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
-                My Projects
-              </h2>
-            </div>
+            <h2 className="text-2xl md:text-4xl font-semibold tracking-tight">
+              My Projects
+            </h2>
 
             <div className="hidden md:flex items-center gap-2 text-neutral-300">
               <Code2 className="h-5 w-5" />
@@ -48,8 +46,8 @@ const Projects: React.FC = () => {
             </div>
           </div>
 
-          {/* Projects Grid */}
-          <div className="mt-10 grid md:grid-cols-2 gap-8">
+          {/* Projects Grid — stacks to 1 col on mobile */}
+          <div className="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {projects.map((project) => (
               <motion.article
                 key={project.name}
@@ -57,10 +55,10 @@ const Projects: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.25 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className="rounded-xl border border-neutral-800 bg-neutral-900/40 p-6 hover:border-neutral-600 transition"
+                className="rounded-xl border border-neutral-800 bg-neutral-900/40 p-5 md:p-6 hover:border-neutral-600 transition"
               >
                 <div className="flex items-start justify-between">
-                  <h3 className="text-xl md:text-2xl font-semibold">
+                  <h3 className="text-lg md:text-2xl font-semibold">
                     {project.name}
                   </h3>
 
@@ -68,18 +66,18 @@ const Projects: React.FC = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-lg border border-neutral-700 hover:bg-neutral-800 transition"
+                    className="p-2 rounded-lg border border-neutral-700 hover:bg-neutral-800 transition shrink-0 ml-3"
                   >
                     <Code2 size={18} />
                   </a>
                 </div>
 
-                <p className="mt-4 text-sm md:text-base text-neutral-300 leading-relaxed">
+                <p className="mt-3 text-sm md:text-base text-neutral-300 leading-relaxed">
                   {project.description}
                 </p>
 
                 {/* Tech stack */}
-                <div className="mt-5 flex flex-wrap gap-2 py-10">
+                <div className="mt-4 flex flex-wrap gap-2 pb-2">
                   {project.tech.map((t) => (
                     <span
                       key={t}

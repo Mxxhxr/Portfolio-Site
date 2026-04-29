@@ -10,15 +10,11 @@ uniform float uEnableWaves;
 void main() {
     vUv = uv;
     float time = uTime * 5.;
-
     float waveFactor = uEnableWaves;
-
     vec3 transformed = position;
-
     transformed.x += sin(time + position.y) * 0.5 * waveFactor;
     transformed.y += cos(time + position.z) * 0.15 * waveFactor;
     transformed.z += sin(time + position.x) * waveFactor;
-
     gl_Position = projectionMatrix * modelViewMatrix * vec4(transformed, 1.0);
 }
 `;
@@ -32,8 +28,6 @@ uniform sampler2D uTexture;
 void main() {
     float time = uTime;
     vec2 pos = vUv;
-    
-    float move = sin(time + mouse) * 0.01;
     float r = texture2D(uTexture, pos + cos(time * 2. - time + pos.x) * .01).r;
     float g = texture2D(uTexture, pos + tan(time * .5 + pos.x - time) * .01).g;
     float b = texture2D(uTexture, pos - cos(time * 2. + time + pos.y) * .01).b;
@@ -97,7 +91,6 @@ class AsciiFilter {
 
     if (this.context) {
       this.context.imageSmoothingEnabled = false;
-      this.context.imageSmoothingEnabled = false;
     }
 
     this.onMouseMove = this.onMouseMove.bind(this);
@@ -109,7 +102,6 @@ class AsciiFilter {
     this.height = height;
     this.renderer.setSize(width, height);
     this.reset();
-
     this.center = { x: width / 2, y: height / 2 };
     this.mouse = { x: this.center.x, y: this.center.y };
   }
@@ -118,10 +110,8 @@ class AsciiFilter {
     if (this.context) {
       this.context.font = `${this.fontSize}px ${this.fontFamily}`;
       const charWidth = this.context.measureText('A').width;
-
       this.cols = Math.floor(this.width / (this.fontSize * (charWidth / this.fontSize)));
       this.rows = Math.floor(this.height / this.fontSize);
-
       this.canvas.width = this.cols;
       this.canvas.height = this.rows;
       this.pre.style.fontFamily = this.fontFamily;
@@ -141,15 +131,13 @@ class AsciiFilter {
 
   render(scene: THREE.Scene, camera: THREE.Camera) {
     this.renderer.render(scene, camera);
-
     const w = this.canvas.width;
     const h = this.canvas.height;
     if (this.context) {
       this.context.clearRect(0, 0, w, h);
-      if (this.context && w && h) {
+      if (w && h) {
         this.context.drawImage(this.renderer.domElement, 0, 0, w, h);
       }
-
       this.asciify(this.context, w, h);
       this.hue();
     }
@@ -159,13 +147,8 @@ class AsciiFilter {
     this.mouse = { x: e.clientX * PX_RATIO, y: e.clientY * PX_RATIO };
   }
 
-  get dx() {
-    return this.mouse.x - this.center.x;
-  }
-
-  get dy() {
-    return this.mouse.y - this.center.y;
-  }
+  get dx() { return this.mouse.x - this.center.x; }
+  get dy() { return this.mouse.y - this.center.y; }
 
   hue() {
     const deg = (Math.atan2(this.dy, this.dx) * 180) / Math.PI;
@@ -181,12 +164,7 @@ class AsciiFilter {
         for (let x = 0; x < w; x++) {
           const i = x * 4 + y * 4 * w;
           const [r, g, b, a] = [imgData[i], imgData[i + 1], imgData[i + 2], imgData[i + 3]];
-
-          if (a === 0) {
-            str += ' ';
-            continue;
-          }
-
+          if (a === 0) { str += ' '; continue; }
           let gray = (0.3 * r + 0.6 * g + 0.1 * b) / 255;
           let idx = Math.floor((1 - gray) * (this.charset.length - 1));
           if (this.invert) idx = this.charset.length - idx - 1;
@@ -225,7 +203,6 @@ class CanvasTxt {
     this.fontSize = fontSize;
     this.fontFamily = fontFamily;
     this.color = color;
-
     this.font = `600 ${this.fontSize}px ${this.fontFamily}`;
   }
 
@@ -233,12 +210,8 @@ class CanvasTxt {
     if (this.context) {
       this.context.font = this.font;
       const metrics = this.context.measureText(this.txt);
-
-      const textWidth = Math.ceil(metrics.width) + 20;
-      const textHeight = Math.ceil(metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent) + 20;
-
-      this.canvas.width = textWidth;
-      this.canvas.height = textHeight;
+      this.canvas.width = Math.ceil(metrics.width) + 20;
+      this.canvas.height = Math.ceil(metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent) + 20;
     }
   }
 
@@ -247,25 +220,14 @@ class CanvasTxt {
       this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.context.fillStyle = this.color;
       this.context.font = this.font;
-
       const metrics = this.context.measureText(this.txt);
-      const yPos = 10 + metrics.actualBoundingBoxAscent;
-
-      this.context.fillText(this.txt, 10, yPos);
+      this.context.fillText(this.txt, 10, 10 + metrics.actualBoundingBoxAscent);
     }
   }
 
-  get width() {
-    return this.canvas.width;
-  }
-
-  get height() {
-    return this.canvas.height;
-  }
-
-  get texture() {
-    return this.canvas;
-  }
+  get width()   { return this.canvas.width; }
+  get height()  { return this.canvas.height; }
+  get texture() { return this.canvas; }
 }
 
 interface CanvAsciiOptions {
@@ -316,7 +278,7 @@ class CanvAscii {
     this.height = height;
     this.enableWaves = enableWaves;
 
-    this.camera = new THREE.PerspectiveCamera(45, this.width / this.height, 1, 1000);
+    this.camera = new THREE.PerspectiveCamera(45, width / height, 1, 1000);
     this.camera.position.z = 30;
 
     this.scene = new THREE.Scene();
@@ -341,11 +303,7 @@ class CanvAscii {
     this.texture.minFilter = THREE.NearestFilter;
 
     const textAspect = this.textCanvas.width / this.textCanvas.height;
-    const baseH = this.planeBaseHeight;
-    const planeW = baseH * textAspect;
-    const planeH = baseH;
-
-    this.geometry = new THREE.PlaneGeometry(planeW, planeH, 36, 36);
+    this.geometry = new THREE.PlaneGeometry(this.planeBaseHeight * textAspect, this.planeBaseHeight, 36, 36);
     this.material = new THREE.ShaderMaterial({
       vertexShader,
       fragmentShader,
@@ -383,13 +341,36 @@ class CanvAscii {
   setSize(w: number, h: number) {
     this.width = w;
     this.height = h;
-
     this.camera.aspect = w / h;
     this.camera.updateProjectionMatrix();
-
     this.filter.setSize(w, h);
-
     this.center = { x: w / 2, y: h / 2 };
+  }
+
+  // ── NEW: swap texture + geometry without rebuilding the whole scene ──
+  updateTextSize(textFontSize: number, planeBaseHeight: number) {
+    this.textFontSize = textFontSize;
+    this.planeBaseHeight = planeBaseHeight;
+
+    // rebuild the text canvas at the new font size
+    this.textCanvas = new CanvasTxt(this.textString, {
+      fontSize: textFontSize,
+      fontFamily: 'IBM Plex Mono',
+      color: this.textColor
+    });
+    this.textCanvas.resize();
+    this.textCanvas.render();
+
+    // update the texture
+    this.texture.image = this.textCanvas.texture;
+    this.texture.needsUpdate = true;
+
+    // swap the geometry so the plane matches the new aspect ratio + size
+    const oldGeometry = this.geometry;
+    const textAspect = this.textCanvas.width / this.textCanvas.height;
+    this.geometry = new THREE.PlaneGeometry(planeBaseHeight * textAspect, planeBaseHeight, 36, 36);
+    this.mesh.geometry = this.geometry;
+    oldGeometry.dispose();
   }
 
   load() {
@@ -399,9 +380,7 @@ class CanvAscii {
   onMouseMove(evt: MouseEvent | TouchEvent) {
     const e = (evt as TouchEvent).touches ? (evt as TouchEvent).touches[0] : (evt as MouseEvent);
     const bounds = this.container.getBoundingClientRect();
-    const x = e.clientX - bounds.left;
-    const y = e.clientY - bounds.top;
-    this.mouse = { x, y };
+    this.mouse = { x: e.clientX - bounds.left, y: e.clientY - bounds.top };
   }
 
   animate() {
@@ -414,12 +393,9 @@ class CanvAscii {
 
   render() {
     const time = new Date().getTime() * 0.001;
-
     this.textCanvas.render();
     this.texture.needsUpdate = true;
-
     (this.mesh.material as THREE.ShaderMaterial).uniforms.uTime.value = Math.sin(time);
-
     this.updateRotation();
     this.filter.render(this.scene, this.camera);
   }
@@ -427,7 +403,6 @@ class CanvAscii {
   updateRotation() {
     const x = map(this.mouse.y, 0, this.height, 0.5, -0.5);
     const y = map(this.mouse.x, 0, this.width, -0.5, 0.5);
-
     this.mesh.rotation.x += (x - this.mesh.rotation.x) * 0.05;
     this.mesh.rotation.y += (y - this.mesh.rotation.y) * 0.05;
   }
@@ -440,8 +415,8 @@ class CanvAscii {
         material.dispose();
         Object.keys(material).forEach(key => {
           const matProp = material[key as keyof typeof material];
-          if (matProp && typeof matProp === 'object' && 'dispose' in matProp && typeof matProp.dispose === 'function') {
-            matProp.dispose();
+          if (matProp && typeof matProp === 'object' && 'dispose' in matProp && typeof (matProp as { dispose?: unknown }).dispose === 'function') {
+            (matProp as { dispose: () => void }).dispose();
           }
         });
       });
@@ -481,128 +456,77 @@ export default function ASCIIText({
   const containerRef = useRef<HTMLDivElement>(null);
   const asciiRef = useRef<CanvAscii | null>(null);
 
+  // When textFontSize or planeBaseHeight change (e.g. on window resize via App.tsx),
+  // update the mesh in-place without tearing down the whole scene.
+  useEffect(() => {
+    if (asciiRef.current) {
+      asciiRef.current.updateTextSize(textFontSize, planeBaseHeight);
+    }
+  }, [textFontSize, planeBaseHeight]);
+
   useEffect(() => {
     if (!containerRef.current) return;
 
     const { width, height } = containerRef.current.getBoundingClientRect();
 
-    if (width === 0 || height === 0) {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting && entry.boundingClientRect.width > 0 && entry.boundingClientRect.height > 0) {
-            const { width: w, height: h } = entry.boundingClientRect;
-
-            asciiRef.current = new CanvAscii(
-              {
-                text,
-                asciiFontSize,
-                textFontSize,
-                textColor,
-                planeBaseHeight,
-                enableWaves
-              },
-              containerRef.current!,
-              w,
-              h
-            );
-            asciiRef.current.load();
-
-            observer.disconnect();
-          }
-        },
-        { threshold: 0.1 }
+    const init = (w: number, h: number) => {
+      asciiRef.current = new CanvAscii(
+        { text, asciiFontSize, textFontSize, textColor, planeBaseHeight, enableWaves },
+        containerRef.current!,
+        w,
+        h
       );
+      asciiRef.current.load();
+    };
 
-      observer.observe(containerRef.current);
-
-      return () => {
-        observer.disconnect();
-        if (asciiRef.current) {
-          asciiRef.current.dispose();
+    if (width === 0 || height === 0) {
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting && entry.boundingClientRect.width > 0) {
+          init(entry.boundingClientRect.width, entry.boundingClientRect.height);
+          observer.disconnect();
         }
-      };
+      }, { threshold: 0.1 });
+      observer.observe(containerRef.current);
+      return () => { observer.disconnect(); asciiRef.current?.dispose(); };
     }
 
-    asciiRef.current = new CanvAscii(
-      {
-        text,
-        asciiFontSize,
-        textFontSize,
-        textColor,
-        planeBaseHeight,
-        enableWaves
-      },
-      containerRef.current,
-      width,
-      height
-    );
-    asciiRef.current.load();
+    init(width, height);
 
     const ro = new ResizeObserver(entries => {
       if (!entries[0] || !asciiRef.current) return;
       const { width: w, height: h } = entries[0].contentRect;
-      if (w > 0 && h > 0) {
-        asciiRef.current.setSize(w, h);
-      }
+      if (w > 0 && h > 0) asciiRef.current.setSize(w, h);
     });
     ro.observe(containerRef.current);
 
-    return () => {
-      ro.disconnect();
-      if (asciiRef.current) {
-        asciiRef.current.dispose();
-      }
-    };
-  }, [text, asciiFontSize, textFontSize, textColor, planeBaseHeight, enableWaves]);
+    return () => { ro.disconnect(); asciiRef.current?.dispose(); };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [text, asciiFontSize, textColor, enableWaves]);
 
   return (
     <div
       ref={containerRef}
       className="ascii-text-container"
-      style={{
-        position: 'absolute',
-        width: '100%',
-        height: '100%'
-      }}
+      style={{ position: 'absolute', width: '100%', height: '100%' }}
     >
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap');
-
-        body {
-          margin: 0;
-          padding: 0;
-        }
-
+        body { margin: 0; padding: 0; }
         .ascii-text-container canvas {
-          position: absolute;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
+          position: absolute; left: 0; top: 0; width: 100%; height: 100%;
           image-rendering: optimizeSpeed;
           image-rendering: -moz-crisp-edges;
-          image-rendering: -o-crisp-edges;
           image-rendering: -webkit-optimize-contrast;
-          image-rendering: optimize-contrast;
-          image-rendering: crisp-edges;
           image-rendering: pixelated;
         }
-
         .ascii-text-container pre {
-          margin: 0;
-          user-select: none;
-          padding: 0;
-          line-height: 1em;
-          text-align: left;
-          position: absolute;
-          left: 0;
-          top: 0;
+          margin: 0; user-select: none; padding: 0; line-height: 1em;
+          text-align: left; position: absolute; left: 0; top: 0;
           background-image: radial-gradient(circle, #ff6188 0%, #fc9867 50%, #ffd866 100%);
           background-attachment: fixed;
           -webkit-text-fill-color: transparent;
           -webkit-background-clip: text;
-          z-index: 9;
-          mix-blend-mode: difference;
+          z-index: 9; mix-blend-mode: difference;
         }
       `}</style>
     </div>
