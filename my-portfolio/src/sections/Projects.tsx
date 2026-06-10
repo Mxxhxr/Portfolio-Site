@@ -15,14 +15,15 @@ const projects: Project[] = [
     description:
       "Built a compiler pipeline in C++ that parses source code and generates intermediate representations using recursive descent parsing and AST construction.",
     tech: ["C++", "Parsing", "Compiler Design"],
-    github: "https://github.com/Mxxhxr/Parser_Project"
+    github: "https://mxxhxr.github.io/Parser_Project/",
+
   },
   {
     name: "NJIT Schedule Generator",
     description:
       "Full-stack web application that generates optimized class schedules using real NJIT course data. Supports multi-day sections and semester-based schedule parsing.",
     tech: ["React", "Node.js", "MySQL", "Express"],
-    github: "https://github.com/orgs/NJIT-Schedule-Suggestor/repositories"
+    github: "https://github.com/orgs/NJIT-Schedule-Suggestor/repositories",
   }
 ];
 
