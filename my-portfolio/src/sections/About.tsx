@@ -232,10 +232,10 @@ export default function AboutSection() {
           <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">Hi there 👋</h2>
 
           <p className="text-white/80 leading-relaxed text-sm sm:text-base md:text-lg mb-6 sm:mb-8">
-            I'm Maahir, a recent CS graduate from NJIT (Dec 2025) with 10 months of industry experience at Medtronic and
-            Cambridge Associates. I build scalable software from backend automation pipelines to full-stack web
-            apps, turning complex problems into reliable solutions. I focus on clean design, performance, and
-            delivering results that make an impact.
+            I’m Maahir, a recent CS graduate from NJIT (Dec 2025) with 10 months of internship experience at Medtronic
+            and Cambridge Associates. I automated data pipelines at Medtronic and built full-stack features for a
+            client portal at Cambridge Associates. I love learning new things, especially when it comes to technology.
+            Outside of code, I’m a gamer, a car enthusiast, and a die-hard Bengals fan. #WhoDey
           </p>
 
           {/* Logo loop — smaller row height on mobile */}

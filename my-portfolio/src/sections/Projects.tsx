@@ -23,7 +23,7 @@ const projects: Project[] = [
     description:
       "Full-stack web application that generates optimized class schedules using real NJIT course data. Supports multi-day sections and semester-based schedule parsing.",
     tech: ["React", "Node.js", "MySQL", "Express"],
-    github: "https://github.com/orgs/NJIT-Schedule-Suggestor/repositories",
+    github: "https://dh4iwl3ven4fq.cloudfront.net/",
   }
 ];
 
